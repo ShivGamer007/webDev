@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration form</title>
+    <style>
+        body{
+            display: flex;
+            justify-content: center;
+            background-color: aqua;
+        }
+        h2{
+            color: blue;
+        }
+        #submit{
+            display: flex;
+            justify-content: center;
+            background-color: rgb(174, 174, 174);
+        }
+        #submit:hover{
+            
+            background-color: LIME;
+        }
+    </style>
+    
+</head>
+<body>
+    <form onsubmit="return validate()" action="welcome.html">
+        <h2>Registration Form</h2>
+        <br><br>
+        Name: <input id="name" type="text" placeholder="enter name"><br><br>
+        Class: <input id="classs" type="number" placeholder="enter class"><br><br>
+        DOB: <input type="date" ><br><br>
+        Email: <input id="email" type="text" placeholder="enter email"><br><br>
+        Password: <input id="pass" type="password" placeholder="enter password"><br><br>
+        Confirm Pass: <input id="confirm" type="password" placeholder="enter password"><br><br><br>
+        <button id="submit">SUBMIT</button><br><br>
+    </form>
+    
+    <script>
+        function validate(){
+            var uname = document.getElementById("name");
+            var classs = document.getElementById("classs");
+            var password = document.getElementById("pass").value;
+            var email = document.getElementById("email").value;
+            var cnf = document.getElementById("confirm").value;
+            var n = password.length;
+
+            var f1=0,f2=0;
+            for (var i=0;i<email.length;i++){
+                if (email[i]=='@'){
+                    f1=1;
+                }
+                if (email[i]=='.'){
+                    f2=1
+                }
+            }
+
+            if (uname.value==""||password.value==""||classs.value==""||email.value==""||cnf.value==""){
+                alert("No Blank values are allowed");
+                return false;
+            }
+            if(n<=8){
+                 alert("Password must be of more than 8 characters.");
+                return false;
+            }
+            if(f1==0 || f2==0){
+                alert("enter a valid email.");
+                return false;
+            }
+            if(password!=cnf){
+                alert("confirm pass must be same as the password.");
+                return false;
+            }
+            return true;
+        }
+
+    </script>
+
+</body>
+</html>
